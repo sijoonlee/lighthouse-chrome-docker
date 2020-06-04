@@ -1,6 +1,6 @@
 ## What is this?
 
-Lighthouse runs on Chromium (puppeteer)  
+Lighthouse runs on Chrome browser
 It is to generate report html file and json  
 
 ## How to run  
