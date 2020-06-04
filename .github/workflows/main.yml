@@ -11,3 +11,8 @@ jobs:
           uses: ./action
           with:
             TARGET_ADDRESS: "https://ratehub.ca"
+        - name: save artifact
+          uses: actions/upload-artifact@v1
+          with:
+            name: report_file
+            path: /usr/src/app/report.html
