@@ -1,6 +1,5 @@
 FROM sijoonlee/lighthouse-with-chrome
 ADD entrypoint.sh entrypoint.sh
-RUN ls
-RUN pwd
 RUN chmod +x entrypoint.sh
+RUN pwd && ls -l
 ENTRYPOINT ["/github/workspace/entrypoint.sh"]
