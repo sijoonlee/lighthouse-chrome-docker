@@ -3,4 +3,4 @@ ADD entrypoint.sh entrypoint.sh
 RUN ls
 RUN pwd
 RUN chmod +x entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/github/workspace/entrypoint.sh"]
