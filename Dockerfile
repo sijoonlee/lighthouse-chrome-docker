@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
   fonts-symbola \
   fonts-noto \
   fonts-freefont-ttf \
-  nodejs \
   --no-install-recommends \
   && apt-get purge --auto-remove -y curl gnupg \
   && rm -rf /var/lib/apt/lists/*
