@@ -1,5 +1,5 @@
 FROM node:14.4.0-slim
-WORKDIR /github/workspace
+WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y \
   apt-transport-https \
   ca-certificates \
