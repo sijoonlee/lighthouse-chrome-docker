@@ -1,12 +1,12 @@
-name: "Hello Actions"
-description: "Greet someone"
-author: "octocat@github.com"
+name: "lighthouse action"
+description: "lighthouse action with docker image"
+author: "github.com/sijoonlee"
 
 inputs:
-  MY_NAME:
-    description: "Who to greet"
+  TARGET_ADDRESS:
+    description: "http address to examine"
     required: true
-    default: "World"
+    default: "https://ratehub.ca"
 
 runs:
   using: "docker"
