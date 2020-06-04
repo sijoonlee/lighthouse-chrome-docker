@@ -5,6 +5,7 @@ const chromeLauncher = require('chrome-launcher');
 const lighthouse = require('lighthouse');
 const {URL} = require('url');
 
+
 function launchChromeAndRunLighthouse(url, opts, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
     opts.port = chrome.port;
@@ -18,7 +19,22 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
   });
 }
 
-const run = async (url = 'https://ratehub.ca', exportTo = 'none') => {
+const run = async (addr = 'https://ratehub.ca', 
+                  exportTo = 'none', 
+                  willCheckPass = true, 
+                  minPerformance = 0.5,
+                  minAccessibility = 0.5,
+                  minBestPractices = 0.5,
+                  minSEO = 0.5,
+                  minPWA = 0.5 ) => {
+
+  const minScores = {
+    "performance" : minPerformance,
+    "accessibility" : minAccessibility,
+    "best-practices" : minBestPractices,
+    "seo" : minSEO,
+    "pwa" : minPWA
+  }
 
   const opts = {
     chromeFlags: [
@@ -31,15 +47,33 @@ const run = async (url = 'https://ratehub.ca', exportTo = 'none') => {
   };
 
 
-  const { report, lhr } = await launchChromeAndRunLighthouse(url, opts)
+  const { report, lhr } = await launchChromeAndRunLighthouse(addr, opts)
 
   
-  console.log(`Lighthouse scores:\n${Object.keys(lhr.categories).map(key => {return `${key}:${lhr.categories[key]['score']}`}).join('\n')}`);
+  let scoreCollect = {}
+  Object.keys(lhr.categories).map( key => { scoreCollect[key] = lhr.categories[key]['score']})
+ 
+  let pass = true; // if one subject fail, it is considered as fail in total
+  for (let [subject , score] of Object.entries(scoreCollect)){
+    let passLabel = '';
+    if(willCheckPass === 'true'){
+      if(score < minScores[subject]) {
+        passLabel = "fail";
+        pass = false;
+      } else {
+        passLabel = "pass";
+      }
+      passLabel += ` | minimum ${minScores[subject]}`;
+    }
+    console.log(subject, score, passLabel)
+  }
+  
+  await pWriteFile("passOrFail.txt", pass ? "pass" : "fail")
 
   if(exportTo === 'html'){
     await pWriteFile("report.html", report);
   }
-  
+
   if(exportTo === 'json'){
     await pWriteFile("report.json", JSON.stringify(lhr),'utf8', (err) => {
       if(err !== null)
