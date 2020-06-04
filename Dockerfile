@@ -26,6 +26,4 @@ RUN apt-get update && apt-get install -y \
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080
-CMD ["node", "command.js", "-a", "https://ratehub.ca"]
 

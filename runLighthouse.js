@@ -36,12 +36,12 @@ const run = async (url = 'https://ratehub.ca') => {
   
   console.log(`Lighthouse scores:\n${Object.keys(lhr.categories).map(key => {return `${key}:${lhr.categories[key]['score']}`}).join('\n')}`);
 
-  // await pWriteFile("out.html", report);
+  await pWriteFile("out.html", report);
 
-  // await pWriteFile("output.json", JSON.stringify(lhr),'utf8', (err) => {
-  //     if(err !== null)
-  //       return console.error(err);
-  // })
+  await pWriteFile("output.json", JSON.stringify(lhr),'utf8', (err) => {
+      if(err !== null)
+        return console.error(err);
+  })
 };
 
 module.exports = {
