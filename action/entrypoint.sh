@@ -1,4 +1,4 @@
 #!/bin/bash
+echo $INPUT_TARGET_ADDRESS
 cd /usr/app
-echo $TARGET_ADDRESS
-node command.js -a $TARGET_ADDRESS
+node command.js -a $INPUT_TARGET_ADDRESS
