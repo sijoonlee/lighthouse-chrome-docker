@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /github/workspace
+cd /usr/app
 ls -la
 pwd
 cd action
