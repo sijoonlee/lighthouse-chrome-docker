@@ -1,11 +1,13 @@
 name: A workflow for lighthouse action
 on: push
 jobs:
-    build:
+    lighthouse_action:
       name: lighthouse action
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v1
-        - uses: ./action
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: run lighthouse
+          uses: ./action
           with:
             TARGET_ADDRESS: "https://ratehub.ca"
