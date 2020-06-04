@@ -6,17 +6,20 @@ const {Command, flags} = require('@oclif/command')
 class CustomCommand extends Command {
   async run() {
     const {flags} = this.parse(CustomCommand)
-    await require('./runLighthouse').run(flags.addr);
+    await require('./runLighthouse').run(flags.addr, flags.exportTo);
   }
 }
 
 CustomCommand.flags = {
   version: flags.version(),
   help: flags.help(),
-  // run with --dir= or -d=
   addr: flags.string({
     char: 'a',
     default: 'http://ratehub.ca',
+  }),
+  exportTo: flags.string({
+    char: 'e',
+    default: 'none', // or 'html'
   }),
 }
 

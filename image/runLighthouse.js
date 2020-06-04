@@ -18,7 +18,7 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
   });
 }
 
-const run = async (url = 'https://ratehub.ca') => {
+const run = async (url = 'https://ratehub.ca', exportTo = 'none') => {
 
   const opts = {
     chromeFlags: [
@@ -36,12 +36,17 @@ const run = async (url = 'https://ratehub.ca') => {
   
   console.log(`Lighthouse scores:\n${Object.keys(lhr.categories).map(key => {return `${key}:${lhr.categories[key]['score']}`}).join('\n')}`);
 
-  // await pWriteFile("out.html", report);
-
-  // await pWriteFile("output.json", JSON.stringify(lhr),'utf8', (err) => {
-  //     if(err !== null)
-  //       return console.error(err);
-  // })
+  if(exportTo === 'html'){
+    await pWriteFile("report.html", report);
+  }
+  
+  if(exportTo === 'json'){
+    await pWriteFile("report.json", JSON.stringify(lhr),'utf8', (err) => {
+      if(err !== null)
+        return console.error(err);
+    })
+  }
+  
 };
 
 module.exports = {
