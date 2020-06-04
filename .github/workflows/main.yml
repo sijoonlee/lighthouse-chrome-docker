@@ -15,4 +15,4 @@ jobs:
           uses: actions/upload-artifact@v1
           with:
             name: report_file
-            path: /github/workspace/report.html
+            path: /home/runner/work/lighthouse-chrome-docker/lighthouse-chrome-docker/report.html

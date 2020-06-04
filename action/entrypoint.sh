@@ -3,4 +3,3 @@ echo $INPUT_TARGET_ADDRESS
 cd /usr/src/app
 node command.js -a $INPUT_TARGET_ADDRESS -e html
 cp ./report.html /github/workspace/report.html
-ls -la /github/workspace
