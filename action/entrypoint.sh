@@ -3,7 +3,7 @@ echo $INPUT_TARGET_ADDRESS
 cd /usr/src/app
 node command.js --addr $INPUT_TARGET_ADDRESS \
                 --exportTo html \
-                --willCheckPass true \
+                --willCheckPass yes \
                 --minPerformance 0.9 \
                 --minAccessibility 0.9 \
                 --minBestPractices 0.9 \

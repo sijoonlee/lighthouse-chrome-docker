@@ -21,7 +21,7 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
 
 const run = async (addr = 'https://ratehub.ca', 
                   exportTo = 'none', 
-                  willCheckPass = true, 
+                  willCheckPass = 'no', 
                   minPerformance = 0.5,
                   minAccessibility = 0.5,
                   minBestPractices = 0.5,
@@ -56,7 +56,7 @@ const run = async (addr = 'https://ratehub.ca',
   let pass = true; // if one subject fail, it is considered as fail in total
   for (let [subject , score] of Object.entries(scoreCollect)){
     let passLabel = '';
-    if(willCheckPass === 'true'){
+    if(willCheckPass === 'yes'){
       if(score < minScores[subject]) {
         passLabel = "fail";
         pass = false;

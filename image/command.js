@@ -31,7 +31,7 @@ CustomCommand.flags = {
   }),
   willCheckPass: flags.string({
     char: 'c',
-    default: 'false' // or 'true' - it's string value, not boolean
+    default: 'no' // or 'yes' - it's string value, not boolean
   }),
   minPerformance: flags.string({
     default: 0.5
