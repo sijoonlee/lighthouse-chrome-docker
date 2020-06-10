@@ -12,6 +12,9 @@ node command.js --addr $INPUT_TARGET_ADDRESS \
 
 cp ./report.html /github/workspace/report.html
 
+pwd && ls -al
+ls -al /github/workspace 
+
 read passOrFail < passOrFail.txt
 echo $passOrFail
 if [ $passOrFail == "pass" ]; then 
