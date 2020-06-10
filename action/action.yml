@@ -7,6 +7,34 @@ inputs:
     description: "http address to examine"
     required: true
     default: "https://ratehub.ca"
+  EXPORT_TO:
+    description: "html or json"
+    required: true
+    default: "html"
+  WILL_CHECK_PASS:
+    description: "whether to fail when scores < minimum,  yes or no"
+    required: true
+    default: "no"
+  MIN_PERFORMANCE:
+    description: "minimum performance score to pass, range 0~1"
+    required: true
+    default: "0.5"
+  MIN_ACCESSIBILITY:
+    description: "minimum accessibility score to pass, range 0~1"
+    required: true
+    default: "0.5"
+  MIN_BEST_PRACTICES:
+    description: "minimum best practices score to pass, range 0~1"
+    required: true
+    default: "0.5"
+  MIN_SEO:
+    description: "minimum SEO score to pass, range 0~1"
+    required: true
+    default: "0.5"
+  MIN_PWA:
+    description: "minimum progressive web app score, range 0~1"
+    required: true
+    default: "0.5"
 
 runs:
   using: "docker"
