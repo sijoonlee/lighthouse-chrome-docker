@@ -6,7 +6,7 @@ inputs:
   TARGET_ADDRESS:
     description: "http address to examine"
     required: true
-    default: "https://ratehub.ca"
+    default: "http://localhost:8080"
   EXPORT_TO:
     description: "html or json"
     required: true
@@ -38,7 +38,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "sijoonlee/lighthouse-v2:latest"
 
 branding:
   icon: "mic"
