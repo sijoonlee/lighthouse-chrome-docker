@@ -38,7 +38,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "sijoonlee/lighthouse-v2:latest"
+  image: "Dockerfile"
 
 branding:
   icon: "mic"
